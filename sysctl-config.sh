@@ -169,6 +169,7 @@ net.core.netdev_max_backlog = 2500
 net.core.somaxconn = 65000
 
 vm.swappiness = 0
+vm.overcommit_memory = 1
 
 # You can monitor the kernel behavior with regard to the dirty
 # pages by using grep -A 1 dirty /proc/vmstat
