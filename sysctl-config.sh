@@ -106,7 +106,7 @@ net.ipv4.conf.all.log_martians = 1
 
 # Minimum interval between garbage collection passes This interval is
 # in effect under high memory pressure on the pool
-net.ipv4.inet_peer_gc_mintime = 5
+# net.ipv4.inet_peer_gc_mintime = 5
 
 # Disable Explicit Congestion Notification in TCP
 net.ipv4.tcp_ecn = 0
@@ -202,15 +202,15 @@ net.ipv4.tcp_congestion_control=${CONGESTION_CONTROL}
 
 EOF
 
-LIMITS_SET=$(grep 'www-data' /etc/security/limits.conf | grep nofile | grep -v '^#')
+LIMITS_SET=$(grep 'www-nginx' /etc/security/limits.conf | grep nofile | grep -v '^#')
 if [ "${LIMITS_SET}" ]
  then
-	echo "www-data limits for nofiles already set to"
-	grep 'www-data' /etc/security/limits.conf | grep nofil | grep -v '^#'
+	echo "www-nginx limits for nofiles already set to"
+	grep 'www-nginx' /etc/security/limits.conf | grep nofil | grep -v '^#'
  else
-	echo "Setting limits for user www-data in /etc/security/limits.conf"
-	echo "www-data soft nofile 50000" >> /etc/security/limits.conf
-	echo "www-data hard nofile 60000" >> /etc/security/limits.conf
+	echo "Setting limits for user www-nginx in /etc/security/limits.conf"
+	echo "www-nginx soft nofile 50000" >> /etc/security/limits.conf
+	echo "www-nginx hard nofile 60000" >> /etc/security/limits.conf
 fi
 
 PAM_SU=$(grep pam_limits.so /etc/pam.d/su | grep -v '^#')
